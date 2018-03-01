@@ -1,0 +1,10 @@
+
+set(C_DEFINE "AKMOS_BUFSZ=8192;_GNU_SOURCE;_POSIX_SOURCE;_POSIX_C_SOURCE=200809L")
+
+set(C_WARN_FLAGS -Wall -Wextra -Werror -Wmissing-prototypes -Wconversion)
+set(C_CGO_FLAGS -fPIC)
+set(C_DIALECT_FLAGS -ansi -std=c11 -pedantic)
+
+set(C_FLAGS ${C_CGO_FLAGS} ${C_DIALECT_FLAGS} ${C_WARN_FLAGS})
+
+# vim: syn=cmake

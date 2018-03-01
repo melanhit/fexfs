@@ -1,0 +1,38 @@
+INCLUDE(CheckSymbolExists)
+
+CHECK_SYMBOL_EXISTS(SIZE_T_MAX "limits.h" HAVE_SIZE_T_MAX)
+CHECK_SYMBOL_EXISTS(SIZE_MAX "stdint.h" HAVE_SIZE_MAX)
+CHECK_SYMBOL_EXISTS(INT_MAX "limits.h" HAVE_INT_MAX)
+CHECK_SYMBOL_EXISTS(UINT8_MAX "stdint.h" HAVE_UINT8_MAX)
+CHECK_SYMBOL_EXISTS(UINT8_C "stdint.h" HAVE_UINT8_C)
+CHECK_SYMBOL_EXISTS(UINT64_C "stdint.h" HAVE_UINT64_C)
+
+if(NOT HAVE_INT_MAX)
+    unset(HAVE_INT_MAX)
+    message(FATAL_ERROR "INT_MAX is not found")
+endif()
+
+if(NOT HAVE_SIZE_T_MAX)
+    if(NOT HAVE_SIZE_MAX)
+        unset(HAVE_SIZE_T_MAX)
+        unset(HAVE_SIZE_MAX)
+        message(FATAL_ERROR "SIZE_T_MAX or SIZE_MAX is not found")
+    endif()
+endif()
+
+if(NOT HAVE_UINT8_MAX)
+    unset(HAVE_UINT8_MAX)
+    message(FATAL_ERROR "UINT8_MAX is not found")
+endif()
+
+if(NOT HAVE_UINT8_C)
+    unset(HAVE_UINT8_C)
+    message(FATAL_ERROR "UINT8_C is not found")
+endif()
+
+if(NOT HAVE_UINT64_C)
+    unset(HAVE_UINT64_C)
+    message(FATAL_ERROR "UINT64_C is not found")
+endif()
+
+# vim: syn=cmake
